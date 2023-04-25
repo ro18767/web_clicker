@@ -1,0 +1,4 @@
+.GameStatistic .title::after {
+    content: ': ';
+    display: inline;
+}
