@@ -13,8 +13,9 @@ class Clicker {
         this.domElement.classList.add('Clicker');
         gameStatistics.add(this.clicksGameStatistic);
         this.domElement.addEventListener("click", (_event) => {
-            console.log('asdfsdf', this.clicksGameStatistic.value);
+            
             this.clicksGameStatistic.value++;
+            console.log('asdfsdf', this.clicksGameStatistic.value);
         });
     }
 }
