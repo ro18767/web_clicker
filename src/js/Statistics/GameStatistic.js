@@ -8,7 +8,8 @@ class GameStatistic {
     /** @private */
     valuedomElement = document.createElement("span");
     title;
-    code;
+    /** @private */
+    _code;
     /** @private */
     _value;
     get value() {
@@ -19,7 +20,7 @@ class GameStatistic {
     }
     constructor(title = "", code = "", value = 0) {
         this.title = title;
-        this.code = code;
+        this._code = code;
         this._value = value;
         this.domElement.classList.add('GameStatistic');
 

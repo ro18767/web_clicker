@@ -1,4 +1,4 @@
-"use strict";
+дела"use strict";
 
 
 
@@ -11,3 +11,9 @@ appDomElement.append(gameStatistics.domElement);
 
 let clicker = new Clicker(gameStatistics);
 appDomElement.append(clicker.domElement)
+
+
+let soundSetting = new SoundSetting();
+
+
+appDomElement.append(soundSetting.domElement)
