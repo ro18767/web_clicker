@@ -1,4 +1,4 @@
-дела"use strict";
+"use strict";
 
 
 
