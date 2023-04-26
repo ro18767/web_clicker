@@ -18,11 +18,7 @@ class SoundSetting {
 
         this.musicControlElement.setAttribute('type', 'checkbox');
         this.domElement.append(this.musicControlElement);
-
-        this.sfxControlElement.setAttribute('type', 'checkbox');
-        this.domElement.append(this.sfxControlElement);
-
-
+        
         let music_enabledSaver = new Saver('music.enabled', true);
         let music = new Audio('/src/audio/music/Валентин Стрыкало - Так гріє.mp3');
         music.loop = true;
@@ -34,6 +30,13 @@ class SoundSetting {
             if (music_enabledSaver.value) music.play();
             if (!music_enabledSaver.value) music.pause();
         });
+
+
+
+        this.sfxControlElement.setAttribute('type', 'checkbox');
+        this.domElement.append(this.sfxControlElement);
+
+
 
 
         window.addEventListener('click', () => {
