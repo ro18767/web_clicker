@@ -1,4 +1,4 @@
-"use strict";
+д"use strict";
 
 
 class Enemy {
@@ -17,7 +17,7 @@ class Enemy {
         this.domElement.append(this.imageElement);
     }
     isDead() {
-        return hp > 0;
+        return this.hp > 0;
     }
     /**
      * @param {number} damage 
