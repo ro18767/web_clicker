@@ -1,4 +1,4 @@
-д"use strict";
+"use strict";
 
 
 class Enemy {
