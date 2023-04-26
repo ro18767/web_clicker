@@ -19,3 +19,6 @@ let soundSetting = new SoundSetting();
 appDomElement.append(soundSetting.domElement)
 let balance_element = new Balance();
 appDomElement.append(balance_element.domElement);
+
+let enemy = new Enemy();
+appDomElement.append(enemy.domElement);
