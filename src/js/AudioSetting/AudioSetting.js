@@ -8,18 +8,18 @@
     </audio>
 
 */
-class SoundSetting {
+class AudioSetting {
     domElement = document.createElement("div");
     musicControlElement = document.createElement("input");
     sfxControlElement = document.createElement("div");
 
     constructor() {
-        this.domElement.classList.add('SoundSetting');
+        this.domElement.classList.add('AudioSetting');
 
         this.musicControlElement.setAttribute('type', 'checkbox');
         this.domElement.append(this.musicControlElement);
         
-        let music_enabledSaver = new Saver('music.enabled', true);
+        let music_enabledSaver = new Saver('AudioSetting.music.enabled', true);
         let music = new Audio('/src/audio/music/Валентин Стрыкало - Так гріє.mp3');
         music.loop = true;
 

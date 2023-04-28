@@ -13,9 +13,9 @@ let clicker = new Clicker(gameStatistics);
 appDomElement.append(clicker.domElement)
 
 
-let soundSetting = new SoundSetting();
+let audioSetting = new AudioSetting();
 
 
-appDomElement.append(soundSetting.domElement)
+appDomElement.append(audioSetting.domElement)
 let balance_element = new Balance();
 appDomElement.append(balance_element.domElement);
