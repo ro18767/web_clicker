@@ -1,12 +1,21 @@
 "use strict";
 
 
-class Clicker {
+class Game {
     domElement = document.createElement("div");
     /** @private */
+    balance = new Balance();
+    /** @private */
+    gameStatistics = new GameStatistics();
+    /** @private */
+    clickerDomElement = document.createElement("div");
+    /** @private */
     clicksGameStatistic = new GameStatistic("Clicks", "clicks", 0);
+    /** @private */
     killsGameStatistic = new GameStatistic("Kills", "kills", 0);
+    /** @private */
     lvl = 0;
+    /** @private */
     enemy = new Enemy(this.lvl);
     /** 
      * @private
@@ -14,16 +23,21 @@ class Clicker {
      */
     deadtime;
 
-    /**
-     * 
-     * @param {GameStatistics} gameStatistics 
-     */
-    constructor(gameStatistics) {
-        this.domElement.classList.add('Clicker');
-        gameStatistics.add(this.clicksGameStatistic);
-        gameStatistics.add(this.killsGameStatistic);
+    constructor() {
+        this.domElement.classList.add('Game');
 
-        this.domElement.addEventListener("click", (_event) => {
+        this.domElement.append(this.balance.domElement);
+
+        this.domElement.append(this.clickerDomElement);
+        this.clickerDomElement.classList.add('clicker');
+
+        this.domElement.append(this.gameStatistics.domElement);
+        this.clickerDomElement.append(this.enemy.domElement);
+
+        this.gameStatistics.add(this.clicksGameStatistic);
+        this.gameStatistics.add(this.killsGameStatistic);
+
+        this.clickerDomElement.addEventListener("click", (_event) => {
             if (this.enemy.isDead()) return;
             this.clicksGameStatistic.value++;
 
@@ -34,7 +48,7 @@ class Clicker {
 
         });
 
-        this.domElement.append(this.enemy.domElement);
+        
 
 
         let scope = this;
@@ -61,6 +75,6 @@ class Clicker {
 
         console.log('new Enemy', this.lvl);
         this.enemy = new Enemy(this.lvl);
-        this.domElement.append(this.enemy.domElement);
+        this.clickerDomElement.append(this.enemy.domElement);
     }
 }

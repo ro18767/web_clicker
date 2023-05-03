@@ -1,0 +1,27 @@
+.Game {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-areas:
+    "Balance LevelSelector"
+    "SpetialZone clicker";
+}
+
+.Game .Balance {
+  grid-area: Balance;
+}
+.Game .LevelSelector {
+  grid-area: LevelSelector;
+}
+.Game .GameStatistics {
+  grid-area: SpetialZone;
+}
+.Game .Store {
+  grid-area: SpetialZone;
+}
+.Game .clicker {
+  grid-area: clicker;
+}

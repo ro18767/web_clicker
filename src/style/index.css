@@ -19,6 +19,4 @@ body,
 }
 #app {
   position: relative;
-  display: grid;
-  grid-template-areas: "ui clicker";
 }

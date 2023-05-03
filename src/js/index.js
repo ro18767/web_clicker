@@ -6,16 +6,14 @@
  * @type {HTMLElement}
  */
 let appDomElement = document.getElementById("app");
-let gameStatistics = new GameStatistics();
-appDomElement.append(gameStatistics.domElement);
 
-let clicker = new Clicker(gameStatistics);
-appDomElement.append(clicker.domElement)
+
+let game = new Game();
+appDomElement.append(game.domElement)
 
 
 let audioSetting = new AudioSetting();
 
 
 appDomElement.append(audioSetting.domElement)
-let balance_element = new Balance();
-appDomElement.append(balance_element.domElement);
+
