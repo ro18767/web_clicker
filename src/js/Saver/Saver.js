@@ -11,7 +11,7 @@ class Saver {
     }
     set value(v) {
         this._value = v;
-        window.localStorage.setItem(this._code,v);
+        window.localStorage.setItem(this._code, v);
     }
     constructor(code = "", value = 0) {
         this._code = code;

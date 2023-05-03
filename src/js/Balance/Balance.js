@@ -3,16 +3,36 @@
 
 class Balance {
     domElement = document.createElement("div");
-    
-    balance_value = '123456789';
-    balance_element = document.createElement("span");
+
+    /** 
+     * @private
+     * @type {Saver}
+     */
+    saver;
+    /** 
+     * @private
+     * @type {number}
+     */
+    _value;
+    get value() {
+        return this._value;
+    }
+    set value(v) {
+        this.displayDomElement.textContent = this._value = v;
+    }
+    displayDomElement = document.createElement("span");
 
     constructor() {
         this.domElement.classList.add('Balance');
 
-        this.balance_element.textContent = this.balance_value;
+        this.saver = new Saver(`Balance.value`, 0);
+        this.value = this.saver.value;
 
-        this.domElement.append(this.balance_element);
+
+        this.displayDomElement.textContent = this.value;
+        this.displayDomElement.classList.add('display');
+
+        this.domElement.append(this.displayDomElement);
     }
 
 }

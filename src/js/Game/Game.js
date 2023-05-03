@@ -14,9 +14,9 @@ class Game {
     /** @private */
     killsGameStatistic = new GameStatistic("Kills", "kills", 0);
     /** @private */
-    lvl = 0;
+    levelSelector = new LevelSelector();
     /** @private */
-    enemy = new Enemy(this.lvl);
+    enemy = new Enemy(this.levelSelector.lvl);
     /** 
      * @private
      * @type {number?}
@@ -31,11 +31,16 @@ class Game {
         this.domElement.append(this.clickerDomElement);
         this.clickerDomElement.classList.add('clicker');
 
-        this.domElement.append(this.gameStatistics.domElement);
-        this.clickerDomElement.append(this.enemy.domElement);
 
         this.gameStatistics.add(this.clicksGameStatistic);
         this.gameStatistics.add(this.killsGameStatistic);
+
+        this.clickerDomElement.append(this.enemy.domElement);
+        this.domElement.append(this.gameStatistics.domElement);
+
+
+        this.domElement.append(this.levelSelector.domElement);
+
 
         this.clickerDomElement.addEventListener("click", (_event) => {
             if (this.enemy.isDead()) return;
@@ -43,38 +48,42 @@ class Game {
 
             this.enemy.dealDamage(1);
 
-
             console.log('asdfsdf', this.clicksGameStatistic.value, this.enemy.hp, this.enemy.isDead());
 
+            if (!this.enemy.isDead()) return;
+
+            this.killsGameStatistic.value++;
+            this.deadtime = Date.now();
+
+            if (this.levelSelector.isMaxLvlvSelected()) this.levelSelector.unlockLvl();
         });
 
-        
+        {
+            let scope = this;
 
-
-        let scope = this;
-
-        const animationloop = () => {
-            window.requestAnimationFrame(animationloop);
-            scope.updateEnemy();
-        };
-        animationloop();
+            const animationloop = () => {
+                window.requestAnimationFrame(animationloop);
+                // console.log(this.levelSelector.lvl, this.enemy.lvl);
+                if (this.levelSelector.lvl !== this.enemy.lvl) this.changeEnemy();
+                scope.updateEnemy();
+            };
+            animationloop();
+        }
     }
 
     updateEnemy() {
-        if (!this.enemy.isDead()) return;
-        if (this.deadtime == null) this.killsGameStatistic.value++;
-        this.deadtime ??= Date.now();
-
+        if (!this.enemy.isDead()) if (this.levelSelector.lvl !== this.enemy.lvl) this.changeEnemy();
         if (this.deadtime == null) return;
         if (Date.now() - this.deadtime < 1000) return;
 
-        this.enemy.domElement.remove();
-        this.enemy = new Enemy(this.lvl);
-        this.enemy.domElement.remove();
         this.deadtime = null;
 
-        console.log('new Enemy', this.lvl);
-        this.enemy = new Enemy(this.lvl);
+
+        this.changeEnemy();
+    }
+    changeEnemy() {
+        this.enemy.domElement.remove();
+        this.enemy = new Enemy(this.levelSelector.lvl);
         this.clickerDomElement.append(this.enemy.domElement);
     }
 }

@@ -6,13 +6,29 @@ class Enemy {
     // imageElement = new Image();
     imageElement = document.createElement("span");
     hpElement = document.createElement("span");
-    /** @type {number} */
+    /**
+     * @private 
+     * @type {number}
+     */
     hp;
-    /** @type {number} */
-    fullHp;
+    /**
+     * @private 
+     * @type {number}
+     */
+    _fullHp;
+    get fullHp() {
+        return this._fullHp;
+    }
+    /** @private */
+    _lvl;
+    get lvl() {
+        return this._lvl;
+    }
     name = 'Slime';
     constructor(lvl = 0) {
-        this.fullHp = this.hp = Math.round((lvl * 15 + 10) * Math.pow(1.2, Math.floor(lvl / 2)));
+
+        this._lvl = lvl;
+        this._fullHp = this.hp = Math.round(10 * (lvl + Math.pow(1.55, lvl)));
         this.domElement.classList.add('Enemy');
 
 
@@ -20,7 +36,7 @@ class Enemy {
         this.imageElement.textContent = this.name;
         this.domElement.append(this.imageElement);
 
-        this.hpElement.textContent = `${this.hp}/${this.fullHp}`;
+        this.hpElement.textContent = `${this.hp}/${this._fullHp}`;
         this.domElement.append(this.hpElement);
     }
     isDead() {
@@ -34,6 +50,6 @@ class Enemy {
     dealDamage(damage) {
         this.hp -= damage;
         this.hp = Math.max(this.hp, 0);
-        this.hpElement.textContent = `${this.hp}/${this.fullHp}`;
+        this.hpElement.textContent = `${this.hp}/${this._fullHp}`;
     }
 }

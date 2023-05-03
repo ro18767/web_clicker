@@ -7,6 +7,9 @@
   box-sizing: border-box;
   background-color: var(--color-main);
   color: var(--color-text);
+  border-width: 0;
+  border-style: solid;
+  
 }
 
 html,
