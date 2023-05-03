@@ -18,7 +18,7 @@ class Balance {
         return this._value;
     }
     set value(v) {
-        this.displayDomElement.textContent = this._value = v;
+        this.displayDomElement.textContent = this.saver.value = this._value = v;
     }
     displayDomElement = document.createElement("span");
 

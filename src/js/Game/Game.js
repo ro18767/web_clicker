@@ -54,6 +54,7 @@ class Game {
 
             this.killsGameStatistic.value++;
             this.deadtime = Date.now();
+            this.balance.value += Math.ceil(this.enemy.fullHp / 15);
 
             if (this.levelSelector.isMaxLvlvSelected()) this.levelSelector.unlockLvl();
         });
@@ -77,7 +78,6 @@ class Game {
         if (Date.now() - this.deadtime < 1000) return;
 
         this.deadtime = null;
-
 
         this.changeEnemy();
     }
