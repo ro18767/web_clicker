@@ -15,8 +15,13 @@ class Saver {
     }
     constructor(code = "", value = 0) {
         this._code = code;
-        let v = window.localStorage.getItem(code) ?? JSON.stringify(value);
-        this.value = JSON.parse(v);
+        let v = window.localStorage.getItem(code) ?? value;
+        try {
+            this.value = JSON.parse(v);
+        } catch (error) {
+            console.log({ error });
+            this.value = value;
+        }
     }
 
 }

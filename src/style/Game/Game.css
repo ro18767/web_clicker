@@ -8,7 +8,8 @@
   grid-template-areas:
     "Balance LevelSelector"
     "Store clicker"
-    "GameStatistics clicker";
+    "GameStatistics clicker"
+    "AudioSetting AudioSetting";
   grid-template-columns: 50% 50%;
   grid-template-rows: auto 1fr 1fr;
   background-color: var(--color-text);
@@ -33,4 +34,7 @@
 }
 .Game .clicker {
   grid-area: clicker;
+}
+.Game .AudioSetting {
+  grid-area: AudioSetting;
 }
