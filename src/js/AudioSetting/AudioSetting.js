@@ -23,7 +23,7 @@ class AudioSetting {
         this.domElement.append(this.musicControlElement);
 
         let musicSaver = new Saver('AudioSetting.music.enabled', true);
-        let music = new Audio('/src/audio/music/Валентин Стрыкало - Так гріє.mp3');
+        let music = new Audio('./src/audio/music/Валентин Стрыкало - Так гріє.mp3');
         music.loop = true;
 
         this.musicCheckbox.checked = musicSaver.value;
@@ -62,7 +62,7 @@ class AudioSetting {
     }
     playDamage() {
         if (!this.sfxCheckbox.checked) return;
-        let sound = new Audio('/src/audio/SFX/Damage.wav');
+        let sound = new Audio('./src/audio/SFX/Damage.wav');
         sound.play();
     }
 }
