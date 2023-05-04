@@ -6,13 +6,20 @@ class Game {
     /** @private */
     balance = new Balance();
     /** @private */
-    gameStatistics = new GameStatistics();
+    damage = {
+        DPC: 0,
+        DPS: 0,
+    };
     /** @private */
-    clickerDomElement = document.createElement("div");
+    store = new Store(this.balance, this.damage);
+    /** @private */
+    gameStatistics = new GameStatistics();
     /** @private */
     clicksGameStatistic = new GameStatistic("Clicks", "clicks", 0);
     /** @private */
     killsGameStatistic = new GameStatistic("Kills", "kills", 0);
+    /** @private */
+    clickerDomElement = document.createElement("div");
     /** @private */
     levelSelector = new LevelSelector();
     /** @private */
@@ -31,6 +38,7 @@ class Game {
         this.domElement.append(this.clickerDomElement);
         this.clickerDomElement.classList.add('clicker');
 
+        this.domElement.append(this.store.domElement);
 
         this.gameStatistics.add(this.clicksGameStatistic);
         this.gameStatistics.add(this.killsGameStatistic);
@@ -46,7 +54,7 @@ class Game {
             if (this.enemy.isDead()) return;
             this.clicksGameStatistic.value++;
 
-            this.enemy.dealDamage(1);
+            this.enemy.dealDamage(1 + this.damage.DPC);
 
             console.log('asdfsdf', this.clicksGameStatistic.value, this.enemy.hp, this.enemy.isDead());
 
@@ -62,10 +70,20 @@ class Game {
         {
             let scope = this;
 
+            let lastUpdateTime = Date.now();
             const animationloop = () => {
                 window.requestAnimationFrame(animationloop);
                 // console.log(this.levelSelector.lvl, this.enemy.lvl);
                 if (this.levelSelector.lvl !== this.enemy.lvl) this.changeEnemy();
+
+                {
+                    let currentTime = Date.now();
+                    let daltaTime = currentTime - lastUpdateTime;
+                    lastUpdateTime = currentTime;
+
+                    this.enemy.dealDamage(this.damage.DPS * daltaTime / 1000);
+                }
+
                 scope.updateEnemy();
             };
             animationloop();

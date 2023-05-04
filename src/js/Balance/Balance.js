@@ -29,7 +29,7 @@ class Balance {
         this.value = this.saver.value;
 
 
-        this.displayDomElement.textContent = this.value;
+        this.displayDomElement.textContent = `${this.value} coin`;
         this.displayDomElement.classList.add('display');
 
         this.domElement.append(this.displayDomElement);

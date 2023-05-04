@@ -1,0 +1,21 @@
+.Store {
+  overflow: auto;
+}
+
+.Store .upgrades {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+  }
+.Store .upgrade {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.Store .upgrade button {
+  appearance: none;
+  border-width: 1px;
+}

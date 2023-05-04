@@ -1,4 +1,8 @@
+.GameStatistic {
+  overflow: auto;
+}
+
 .GameStatistic .title::after {
-    content: ': ';
-    display: inline;
+  content: ": ";
+  display: inline;
 }

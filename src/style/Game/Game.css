@@ -7,9 +7,16 @@
   display: grid;
   grid-template-areas:
     "Balance LevelSelector"
-    "SpetialZone clicker";
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto 1fr;
+    "Store clicker"
+    "GameStatistics clicker";
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto 1fr 1fr;
+  background-color: var(--color-text);
+  grid-gap: 1px;
+}
+
+.Game > * {
+  background-color: var(--color-main);
 }
 
 .Game .Balance {
@@ -18,11 +25,11 @@
 .Game .LevelSelector {
   grid-area: LevelSelector;
 }
-.Game .GameStatistics {
-  grid-area: SpetialZone;
-}
 .Game .Store {
-  grid-area: SpetialZone;
+  grid-area: Store;
+}
+.Game .GameStatistics {
+  grid-area: GameStatistics;
 }
 .Game .clicker {
   grid-area: clicker;

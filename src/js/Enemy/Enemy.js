@@ -50,6 +50,6 @@ class Enemy {
     dealDamage(damage) {
         this.hp -= damage;
         this.hp = Math.max(this.hp, 0);
-        this.hpElement.textContent = `${this.hp}/${this._fullHp}`;
+        this.hpElement.textContent = `${Math.ceil(this.hp)}/${this._fullHp}`;
     }
 }
