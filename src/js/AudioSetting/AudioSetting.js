@@ -13,6 +13,7 @@ class AudioSetting {
     musicControlElement = document.createElement("input");
     sfxControlElement = document.createElement("div");
 
+    
     constructor() {
         this.domElement.classList.add('AudioSetting');
 
@@ -43,5 +44,9 @@ class AudioSetting {
             this.musicControlElement.dispatchEvent(new Event('change'));
         });
 
+    }
+    playDamage() {
+        let sound = new Audio('/src/audio/SFX/Damage.wav');
+        sound.play();
     }
 }

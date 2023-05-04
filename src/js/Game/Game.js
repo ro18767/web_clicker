@@ -23,6 +23,9 @@ class Game {
     /** @private */
     levelSelector = new LevelSelector();
     /** @private */
+    audioSetting = new AudioSetting();
+
+    /** @private */
     enemy = new Enemy(this.levelSelector.lvl);
     /** 
      * @private
@@ -49,14 +52,15 @@ class Game {
 
         this.domElement.append(this.levelSelector.domElement);
 
+        this.domElement.append(this.audioSetting.domElement);
+
 
         this.clickerDomElement.addEventListener("click", (_event) => {
             if (this.enemy.isDead()) return;
             this.clicksGameStatistic.value++;
 
             this.enemy.dealDamage(1 + this.damage.DPC);
-
-            console.log('asdfsdf', this.clicksGameStatistic.value, this.enemy.hp, this.enemy.isDead());
+            this.audioSetting.playDamage();
 
             if (!this.enemy.isDead()) return;
 
@@ -76,12 +80,20 @@ class Game {
                 // console.log(this.levelSelector.lvl, this.enemy.lvl);
                 if (this.levelSelector.lvl !== this.enemy.lvl) this.changeEnemy();
 
-                {
+                DPS: {
                     let currentTime = Date.now();
                     let daltaTime = currentTime - lastUpdateTime;
                     lastUpdateTime = currentTime;
-
+                    if (this.enemy.isDead()) break DPS;
                     this.enemy.dealDamage(this.damage.DPS * daltaTime / 1000);
+
+                    if (!this.enemy.isDead()) return;
+
+                    this.killsGameStatistic.value++;
+                    this.deadtime = Date.now();
+                    this.balance.value += Math.ceil(this.enemy.fullHp / 15);
+
+                    if (this.levelSelector.isMaxLvlvSelected()) this.levelSelector.unlockLvl();
                 }
 
                 scope.updateEnemy();

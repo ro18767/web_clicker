@@ -6,6 +6,7 @@ class Enemy {
     // imageElement = new Image();
     imageElement = document.createElement("span");
     hpElement = document.createElement("span");
+    lvlDomElement = document.createElement("span");
     /**
      * @private 
      * @type {number}
@@ -33,15 +34,18 @@ class Enemy {
 
 
         // this.imageElement.src = '/image/slime.png'
-        this.imageElement.textContent = this.name;
+        this.imageElement.textContent = `${this.lvl + 1} lvl. ${this.name}`;
         this.domElement.append(this.imageElement);
 
+        this.domElement.append(this.lvlDomElement);
+
+        
         this.hpElement.textContent = `${this.hp}/${this._fullHp}`;
         this.domElement.append(this.hpElement);
     }
     isDead() {
         let result = this.hp <= 0;
-        if (result) this.imageElement.textContent = `Dead ${this.name}`;
+        if (result) this.imageElement.textContent = `${this.lvl + 1} lvl. Dead ${this.name}`;
         return result;
     }
     /**
