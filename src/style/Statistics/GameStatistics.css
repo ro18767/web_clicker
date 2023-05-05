@@ -2,7 +2,6 @@
   overflow: auto;
 
   display: flex;
-  padding: 1em;
   gap: 1em;
   flex-direction: column;
 }

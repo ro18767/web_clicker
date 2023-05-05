@@ -3,11 +3,11 @@
 }
 
 .Store .upgrades {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 1em;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .Store .upgrade {
   display: flex;
   justify-content: space-between;

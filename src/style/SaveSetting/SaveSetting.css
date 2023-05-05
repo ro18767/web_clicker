@@ -1,0 +1,9 @@
+.SaveSetting {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.SaveSetting button {
+  border-width: 1px;
+}

@@ -8,13 +8,14 @@
     "Balance LevelSelector"
     "Store clicker"
     "GameStatistics clicker"
-    "AudioSetting AudioSetting";
+    "AudioSetting SaveSetting";
   grid-template-columns: 50% 50%;
   grid-template-rows: auto 1fr 1fr auto;
 }
 
 .Game > * {
   box-shadow: 0 0 0 1px;
+  padding: 0.5em;
 }
 
 .Game .Balance {
@@ -34,4 +35,7 @@
 }
 .Game .AudioSetting {
   grid-area: AudioSetting;
+}
+.Game .SaveSetting {
+  grid-area: SaveSetting;
 }

@@ -38,7 +38,7 @@ class LevelSelector {
      * @param {number} lvl 
      */
     drawLvl(lvl) {
-        let lvlDomElement = document.createElement('div');
+        let lvlDomElement = document.createElement('button');
         lvlDomElement.textContent = lvl + 1;
         lvlDomElement.dataset.lvl = lvl;
         this.lvlsdomElement.append(lvlDomElement);

@@ -24,7 +24,8 @@ class Game {
     levelSelector = new LevelSelector();
     /** @private */
     audioSetting = new AudioSetting();
-
+    /** @private */
+    saveSetting = new SaveSetting();
     /** @private */
     enemy = new Enemy(this.levelSelector.lvl);
     /** 
@@ -53,6 +54,8 @@ class Game {
         this.domElement.append(this.levelSelector.domElement);
 
         this.domElement.append(this.audioSetting.domElement);
+
+        this.domElement.append(this.saveSetting.domElement);
 
 
         this.clickerDomElement.addEventListener("click", (_event) => {
